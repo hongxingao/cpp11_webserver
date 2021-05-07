@@ -1,6 +1,6 @@
 #pragma once
 
-#include <memory> // unique_ptr
+#include <memory> 
 #include <mutex>
 
 namespace hongX
@@ -9,7 +9,8 @@ namespace hongX
     class Epoll;         // epoll封装类
     class ThreadPool;    // 线程池类
     class TimerManager;  // 定时器管理类
-
+    
+    // http服务类
     class HttpServer 
     {
     public:

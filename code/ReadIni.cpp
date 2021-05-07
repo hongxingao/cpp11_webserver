@@ -9,6 +9,8 @@ Ini配置文件规则如下：
 在中括号内的为‘节’ [section]
 一个节可包含多个键值对 ‘key=value’
 */
+
+
 int IniReadStr(const char* fname, const char* section, const char* key, char* value, int size);
 long GetRowSize(FILE* fp);
 bool GetRow(FILE* fp, char* row, long count, long fpBegin);//获取一行

@@ -12,6 +12,7 @@ namespace hongX
 {
     class Timer;
 
+    // http连接类
     class HttpLink {
     public:
         // 报文解析状态

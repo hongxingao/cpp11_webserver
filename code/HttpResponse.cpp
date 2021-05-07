@@ -155,7 +155,7 @@ void HttpResponse::doErrorResponse(Buffer& output, std::string message)
     // 响应行
     output.append("HTTP/1.1 " + std::to_string(statusCode_) + " " + itr->second + "\r\n");
     // 报文头
-    output.append("Server: Swings\r\n");
+    output.append("Server: hongX\r\n");
     output.append("Content-type: text/html\r\n");
     output.append("Connection: close\r\n");
     output.append("Content-length: " + std::to_string(body.size()) + "\r\n\r\n");

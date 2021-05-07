@@ -9,7 +9,7 @@
 
 namespace hongX
 {
-
+    // 缓冲区类
     class Buffer {
     public:
         Buffer();

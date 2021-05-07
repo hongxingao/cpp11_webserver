@@ -10,6 +10,7 @@ namespace hongX
 	class HttpLink;
 	class ThreadPool;
 
+	// epoll·â×°Àà
 	class Epoll
 	{
 	public:

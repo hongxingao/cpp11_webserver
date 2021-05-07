@@ -7,6 +7,7 @@ namespace hongX
 {
     class Buffer;
 
+    // http回应类
     class HttpResponse 
     {
     public:
@@ -34,7 +35,7 @@ namespace hongX
         std::map<std::string, std::string> headers_; // 响应报文头部
         int statusCode_;                             // 响应状态码
         std::string path_;                           // 请求资源路径
-        bool keepAlive_;                              // 长连接
+        bool keepAlive_;                             // 长连接
 
     }; 
 
