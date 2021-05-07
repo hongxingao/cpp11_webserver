@@ -12,3 +12,24 @@
 - 实现可以自动增长的缓冲区(std::vector\<char>\)，作为HTTP连接的输入和输出缓冲区
 ## 简要类图
   ![项目简要类图](./img/class_diagram.png)
+
+## 测试与改进
+
+### 测试
+
+- 系统：ubuntu18.04
+
+- cup核心数：4
+
+- 内存大小：4G
+
+- 工具：webbench1.5，1000连接，时间60秒
+
+  ![webbench测试结果](./img/webbench_test.png)
+
+
+
+### 改进
+
+- 实现异步日志
+- 支持优雅关闭连接
