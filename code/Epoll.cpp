@@ -20,7 +20,6 @@ Epoll::~Epoll()
 	close(epollFd_);
 }
 
-// ÉèÖÃÎÄ¼şÃèÊö·û
 int Epoll::operFd(FdOperateType type, int fd, HttpLink* request, int events)
 {
 	if (fd < 0 || request == nullptr)
@@ -41,7 +40,7 @@ int Epoll::operFd(FdOperateType type, int fd, HttpLink* request, int events)
 	return res;
 }
 
-// µÈ´ıÊÂ¼ş·¢Éú, ·µ»Ø»îÔ¾ÃèÊö·ûÊıÁ¿
+// ï¿½È´ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½Ø»ï¿½Ô¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 int Epoll::wait(int timeoutMs)
 {
 	int eventsNum = epoll_wait(epollFd_, &*events_.begin(), events_.size(), timeoutMs);
@@ -51,7 +50,7 @@ int Epoll::wait(int timeoutMs)
 	return eventsNum;
 }
 
-// ´¦Àí»îÔ¾ÊÂ¼ş
+// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¾ï¿½Â¼ï¿½
 void Epoll::handleEvent(int listenFd, std::shared_ptr<ThreadPool>& threadPool, int eventsNum)
 {
     for (int i = 0; i < eventsNum; ++i) 
@@ -60,25 +59,25 @@ void Epoll::handleEvent(int listenFd, std::shared_ptr<ThreadPool>& threadPool, i
         int fd = link->fd();
 
         if (fd == listenFd) 
-            onConnect_(); //ĞÂÁ¬½Ó
+            onConnect_(); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         else 
         {
-            // ÅÅ³ı´íÎóÊÂ¼ş
+            // ï¿½Å³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½
             if ((events_[i].events & EPOLLERR) ||
                 (events_[i].events & EPOLLHUP) ||
                 (!events_[i].events & EPOLLIN)) 
             {
-                // ³ö´íÔò¹Ø±ÕÁ¬½Ó
+                // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø±ï¿½ï¿½ï¿½ï¿½ï¿½
                 onDisConnect_(link);
             }
             else if (events_[i].events & EPOLLIN) 
             {
-                // °Ñ¿É¶ÁÈÎÎñÑ¹½øÏß³Ì³Ø
+                // ï¿½Ñ¿É¶ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¹ï¿½ï¿½ï¿½ß³Ì³ï¿½
                 threadPool->pushJob(std::bind(onRequest_, link));
             }
             else if (events_[i].events & EPOLLOUT) 
             {
-                // °Ñ¿ÉĞ´ÈÎÎñÑ¹½øÏß³Ì³Ø
+                // ï¿½Ñ¿ï¿½Ğ´ï¿½ï¿½ï¿½ï¿½Ñ¹ï¿½ï¿½ï¿½ß³Ì³ï¿½
                 threadPool->pushJob(std::bind(onResponse_, link));
             }
             else 
